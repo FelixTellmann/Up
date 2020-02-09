@@ -4,8 +4,10 @@
     <data-source source="LOCAL" name="MySQL - @localhost" uuid="2ae3a80c-1f11-48ad-b1bc-7a272918bd79">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <schema-control>AUTOMATIC</schema-control>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <code-style-scheme-name>Felix</code-style-scheme-name>
     </data-source>
   </component>
 </project>
