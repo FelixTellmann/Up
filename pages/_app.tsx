@@ -39,6 +39,8 @@ export type NavigationData = {
 export type Props = AppProps & NavigationData & ThemeProps
 
 function Layout({ pageProps, navData, theme, Component }: Props) {
+
+
   return (
     <Frame>
       <Frame.Topbar>

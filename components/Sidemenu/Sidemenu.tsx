@@ -1,8 +1,11 @@
 import React, { FC } from "react";
 import './Sidemenu.scss';
 import { NavigationData } from 'pages/_app';
+import { DropdownData } from './Dropdown';
+
 import { useRouter } from 'next/router';
 import Link from "next/link";
+import { Dropdown } from "components/Sidemenu/Dropdown";
 
 
 export const Sidemenu: FC<NavigationData> = ({ navData }) => {
@@ -22,34 +25,7 @@ export const Sidemenu: FC<NavigationData> = ({ navData }) => {
                 </a>
               </Link>
               {
-                sidemenu === href && dropdownArray && dropdownArray.map(({ id, name, description, href, item: itemArray }) => {
-                  return (
-                    <ul key={id} className="dropdown ">
-                      <li className="dropdown__item">
-                        <Link href={`/index?navigation=${navigation}&sidemenu=${sidemenu}&dropdown=${href}`} as={`/${navigation}/${sidemenu}/${href}`}>
-                          <a className={`dropdown__link${dropdown === href ? ' active' : ''}`}>
-                            <span className="dropdown__text">{name}</span>
-                          </a>
-                        </Link>
-                        <ul className={`dropdown__list${dropdown === href ? ' active' : ''}`}>
-                          {
-                            dropdown === href && itemArray && itemArray.map(({ id, href, name, description }) => {
-                              return (
-                                <li key={id} className="dropdown__list__item">
-                                  <Link href={`/index?navigation=${navigation}&sidemenu=${sidemenu}&dropdown=${dropdown}&item=${href}`} as={`/${navigation}/${sidemenu}/${dropdown}/${href}`}>
-                                    <a className="dropdown__list__link">
-                                      <span className="dropdown__list__text">Examples</span>
-                                    </a>
-                                  </Link>
-                                </li>
-                              );
-                            })
-                          }
-                        </ul>
-                      </li>
-                    </ul>
-                  );
-                })
+                sidemenu === href && dropdownArray && dropdownArray.map(item => <Dropdown {...item} />)
               }
             </div>
           );
